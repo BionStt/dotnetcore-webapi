@@ -60,3 +60,10 @@
 /home/codespace/workspace/WebApi/obj/Debug/netcoreapp3.1/WebApi.dll
 /home/codespace/workspace/WebApi/obj/Debug/netcoreapp3.1/WebApi.pdb
 /home/codespace/workspace/WebApi/obj/Debug/netcoreapp3.1/WebApi.genruntimeconfig.cache
+/home/codespace/workspace/WebApi/bin/Debug/netcoreapp3.1/Microsoft.OpenApi.dll
+/home/codespace/workspace/WebApi/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.Swagger.dll
+/home/codespace/workspace/WebApi/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/codespace/workspace/WebApi/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/codespace/workspace/WebApi/obj/Debug/netcoreapp3.1/WebApi.MvcApplicationPartsAssemblyInfo.cs
+/home/codespace/workspace/WebApi/bin/Debug/netcoreapp3.1/WebApi.xml
+/home/codespace/workspace/WebApi/obj/Debug/netcoreapp3.1/WebApi.xml

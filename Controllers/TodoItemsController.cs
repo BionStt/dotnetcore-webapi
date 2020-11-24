@@ -8,6 +8,7 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+    [Produces("application/json")]
     [ApiController]
     [Route("[controller]")]
     public class TodoItemsController : ControllerBase
@@ -44,7 +45,11 @@ namespace WebApi.Controllers
             return ItemToDTO(todoItem);
         }
         
-        // POST: api/TodoItems
+        /// <summary>
+        /// Creates a TodoItem.
+        /// </summary>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>     
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
@@ -93,7 +98,10 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
-        // DELETE: api/TodoItems/5
+        /// <summary>
+        /// Deletes a specific TodoItem.
+        /// </summary>
+        /// <param name="id"></param> 
         [HttpDelete("{id}")]
         public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id)
         {

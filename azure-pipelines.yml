@@ -37,4 +37,4 @@ steps:
     azureSubscription: 'Subscription-1(a96d1be0-8bbf-4b78-bf76-fe18462f59b8)'
     appType: 'webApp'
     WebAppName: 'beckshome-webapi'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/7059437/dotnetcore-webapi'

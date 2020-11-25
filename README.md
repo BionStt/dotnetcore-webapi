@@ -16,3 +16,4 @@ dotnetcore-webapi uses the following DevOps environment and tools to support a C
 # Open Source Used
 
 * [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) for Swagger document generation.
+* [VSCode REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md) for REST API tests from VS Code. 

@@ -6,8 +6,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Reflection;
 using System.IO;
+using System.Reflection;
+using System.Text.Json.Serialization;
 using WebApi.Models;
 
 namespace WebApi
@@ -26,7 +27,14 @@ namespace WebApi
         {
             services.AddDbContext<PersonContext>(opt =>
                opt.UseInMemoryDatabase("People"));
+
             services.AddControllers();
+
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+            });
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

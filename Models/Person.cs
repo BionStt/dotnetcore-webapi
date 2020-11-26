@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace WebApi.Models
 {
@@ -38,7 +39,10 @@ namespace WebApi.Models
 
     public enum Gender 
     {
+        [EnumMember(Value = "Female" )]
         Female,
+        
+        [EnumMember(Value = "Male" )]
         Male
     }
 }

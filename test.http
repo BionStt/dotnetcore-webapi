@@ -1,4 +1,5 @@
 @host = http://localhost:5000
+# @host = https://beckshome-webapi.azurewebsites.net/
 @contentType = application/json
 
 POST {{host}}/Person HTTP/1.1

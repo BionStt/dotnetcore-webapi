@@ -24,8 +24,8 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            services.AddDbContext<PersonContext>(opt =>
+               opt.UseInMemoryDatabase("People"));
             services.AddControllers();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -34,8 +34,8 @@ namespace WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "ToDo API",
-                    Description = "An example API for a ToDo system.",
+                    Title = "Person API",
+                    Description = "An example API for a person tracking system.",
                     TermsOfService = new Uri("https://beckshome.com/terms"),
                     Contact = new OpenApiContact
                     {

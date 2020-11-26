@@ -20,8 +20,8 @@ namespace WebApi
 
                 try
                 {
-                    var todoContext = services.GetRequiredService<TodoContext>();
-                    DataInitializer.Initialize(todoContext);
+                    var personContext = services.GetRequiredService<PersonContext>();
+                    DataInitializer.Initialize(personContext);
                 }
                 catch (Exception ex)
                 {

@@ -1,8 +1,9 @@
-using System.Collections.Generic;
+using LightQuery.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 using WebApi.Models;
 
@@ -22,18 +23,17 @@ namespace WebApi.Controllers
             _logger = logger;
         }
 
-        // GET: api/Person
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PersonDTO>>> GetPeople()
+        [AsyncLightQuery(forcePagination: true, defaultPageSize: 5)]
+        public IActionResult GetPeople()
         {
-            return await _context.People
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            var people = _context.People.OrderBy(p => Guid.NewGuid());
+            return Ok(people);
         }
         
         // GET: api/Person/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PersonDTO>> GetPerson(long id)
+        public async Task<ActionResult<Person>> GetPerson(long id)
         {
             var person = await _context.People.FindAsync(id);
 
@@ -42,7 +42,7 @@ namespace WebApi.Controllers
                 return NotFound();
             }
 
-            return ItemToDTO(person);
+            return person;
         }
         
         /// <summary>
@@ -51,7 +51,7 @@ namespace WebApi.Controllers
         /// <response code="201">Returns the newly created person</response>
         /// <response code="400">If the person is null</response>     
         [HttpPost]
-        public async Task<ActionResult<PersonDTO>> CreatePerson(Person person)
+        public async Task<ActionResult<Person>> CreatePerson(Person person)
         {
             _context.People.Add(person);
             await _context.SaveChangesAsync();
@@ -59,14 +59,15 @@ namespace WebApi.Controllers
             return CreatedAtAction(
                 nameof(GetPerson),
                 new { id = person.Id },
-                ItemToDTO(person));
+                person
+            );
         }
 
         // PUT: api/Person/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePerson(long id, PersonDTO personDTO)
+        public async Task<IActionResult> UpdatePerson(long id, Person _person)
         {
-            if (id != personDTO.Id)
+            if (id != _person.Id)
             {
                 return BadRequest();
             }
@@ -77,10 +78,10 @@ namespace WebApi.Controllers
                 return NotFound();
             }
 
-            person.FirstName = personDTO.FirstName;
-            person.LastName = personDTO.LastName;
-            person.DateOfBirth = personDTO.DateOfBirth;
-            person.Gender = personDTO.Gender;
+            person.FirstName = _person.FirstName;
+            person.LastName = _person.LastName;
+            person.DateOfBirth = _person.DateOfBirth;
+            person.Gender = _person.Gender;
 
             try
             {
@@ -99,7 +100,7 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="id"></param> 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<PersonDTO>> DeletePerson(long id)
+        public async Task<ActionResult<Person>> DeletePerson(long id)
         {
             var person = await _context.People.FindAsync(id);
             if (person == null)
@@ -110,22 +111,12 @@ namespace WebApi.Controllers
             _context.People.Remove(person);
             await _context.SaveChangesAsync();
 
-            return ItemToDTO(person);
+            return person;
         }
 
         private bool PersonExists(long id)
         {
             return _context.People.Any(e => e.Id == id);
         }
-
-        private static PersonDTO ItemToDTO(Person person) =>
-        new PersonDTO
-        {
-            Id = person.Id,
-            FirstName = person.FirstName,
-            LastName = person.LastName,
-            DateOfBirth = person.DateOfBirth,
-            Gender = person.Gender
-        }; 
     }
 }

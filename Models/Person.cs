@@ -7,34 +7,24 @@ namespace WebApi.Models
     public class Person 
     {
         public long Id {get; set;}
+        [Required]
         [MinLength(5)]
         [MaxLength(50)]
         public string FirstName {get; set;}
+        [Required]
         [MinLength(5)]
         [MaxLength(50)]
         public string LastName {get; set;}
         [Required]
-        public string SSN {get; set;}
+        public string SSN
+        {
+            private get;
+            set;
+        }
         [Required]
-        public DateTime DateOfBirth {get; set;}
+        public DateTime? DateOfBirth {get; set;}
         [Required]
-        public Gender Gender {get; set;}
-    }
-
-    // Excludes the SSN for the DTO
-    public class PersonDTO
-    {
-        public long Id {get; set;}
-        [MinLength(5)]
-        [MaxLength(50)]
-        public string FirstName {get; set;}
-        [MinLength(5)]
-        [MaxLength(50)]
-        public string LastName {get; set;}
-        [Required]
-        public DateTime DateOfBirth {get; set;}
-        [Required]
-        public Gender Gender {get; set;}
+        public Gender? Gender {get; set;}
     }
 
     public enum Gender 

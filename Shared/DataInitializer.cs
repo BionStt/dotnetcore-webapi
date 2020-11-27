@@ -23,6 +23,8 @@ namespace WebApi.Shared
 
                 foreach (WebApi.Models.Person p in people)
                 {
+                    var ssn = new Bogus.Randomizer().Replace("###-##-####");
+                    p.SSN = ssn;
                     personContext.People.Add(p);
                 }
                 personContext.SaveChanges();

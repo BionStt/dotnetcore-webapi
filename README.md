@@ -17,6 +17,6 @@ dotnetcore-webapi uses the following DevOps environment and tools to support a C
 # Open Source Used
 
 * [Bogus](https://github.com/bchavez/Bogus) for data generation.
-* [LightQuery](https://github.com/GeorgDangl/LightQuery) for nifty lightweight WebAPI paging and sorting
+* [LightQuery](https://github.com/GeorgDangl/LightQuery) for nifty lightweight WebAPI paging and sorting.
 * [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) for Swagger document generation.
 * [VSCode REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md) for REST API tests from VS Code. 

@@ -23,6 +23,20 @@ namespace WebApi.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Returns a paginated list of people.
+        /// </summary>
+        /// <remarks>
+        /// Takes Querystring Parameters:
+        /// * sort - Value to sort on
+        /// * page - Current page number
+        /// * pageSize - The page size in records (default is 5 records)
+        ///
+        /// Example Querystrings:
+        /// * GET Person?page=2
+        /// * GET Person?sort=lastName&amp;page=1&amp;pageSize=5
+        ///
+        /// </remarks>
         [HttpGet]
         [AsyncLightQuery(forcePagination: true, defaultPageSize: 5)]
         public IActionResult GetPeople()
@@ -31,7 +45,7 @@ namespace WebApi.Controllers
             return Ok(people);
         }
         
-        // GET: api/Person/5
+        // GET: Person/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Person>> GetPerson(long id)
         {
@@ -63,7 +77,7 @@ namespace WebApi.Controllers
             );
         }
 
-        // PUT: api/Person/5
+        // PUT: Person/5
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePerson(long id, Person _person)
         {

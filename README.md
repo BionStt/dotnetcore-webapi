@@ -2,7 +2,7 @@
 [![Build Status](https://beckshome.visualstudio.com/dotnetcore-webapi/_apis/build/status/thbst16.dotnetcore-webapi?branchName=main)](https://beckshome.visualstudio.com/dotnetcore-webapi/_build/latest?definitionId=6&branchName=main)
 
 dotnetcore-webapi is a simple REST API built on .NET Core. To browse to the online documentation for the API, use the link below:
-* [dotnetcore-webapi REST API](https://beckshome-webapi.azurewebsites.net/swagger/index.html) - A REST API for CRUD with non-read API calls. The API is open and unauthenticated.
+* [dotnetcore-webapi REST API](https://beckshome-webapi.azurewebsites.net/index.html) - A REST API for CRUD with non-read API calls. The API is open and unauthenticated.
 
 dotnetcore-webapi uses the following DevOps environment and tools to support a CI / CD process:
 * [GitHub Source Code Repository](https://github.com/thbst16/dotnetcore-webapi) - All source code is stored in the GitHub repository, which is where you currently find yourself.

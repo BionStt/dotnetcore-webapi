@@ -45,7 +45,12 @@ namespace WebApi.Controllers
             return Ok(people);
         }
         
-        // GET: Person/5
+        /// <summary>
+        /// Returns a single person based upon the Id passed in.
+        /// </summary>
+        /// <param name="id">The Id of the person to be queried</param>
+        /// <response code="200">Returns the person referenced by the Id</response>
+        /// <response code="404">If a person is not found with the associated Id</response> 
         [HttpGet("{id}")]
         public async Task<ActionResult<Person>> GetPerson(long id)
         {
@@ -77,7 +82,13 @@ namespace WebApi.Controllers
             );
         }
 
-        // PUT: Person/5
+        /// <summary>
+        /// Updates a person.
+        /// </summary>
+        /// <param name="id">The Id of the person to be updated</param>
+        /// <response code="204">Confirms the update on the person has been completed</response>
+        /// <response code="400">If the Id parameter does not match the Id of the person being updated</response> 
+        /// <response code="404">If a person is not found with the associated Id</response>  
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePerson(long id, Person _person)
         {
@@ -110,9 +121,11 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Deletes a specific Person.
+        /// Deletes a person.
         /// </summary>
-        /// <param name="id"></param> 
+        /// <param name="id">The Id of the person to be deleted</param>
+        /// <response code="204">Confirms the person has been deleted</response>
+        /// <response code="404">If a person is not found with the associated Id</response>  
         [HttpDelete("{id}")]
         public async Task<ActionResult<Person>> DeletePerson(long id)
         {

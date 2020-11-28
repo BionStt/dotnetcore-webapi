@@ -78,10 +78,11 @@ namespace WebApi
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUI(setupAction =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                c.DefaultModelsExpandDepth(-1);
+                setupAction.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                setupAction.DefaultModelsExpandDepth(-1);
+                setupAction.RoutePrefix = "";
             });
 
             app.UseRouting();
